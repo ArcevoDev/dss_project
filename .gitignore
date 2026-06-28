@@ -12,7 +12,6 @@ dist/
 build/
 
 # Prisma
-server/prisma/migrations/
 server/prisma/generated/
 *.db
 *.db-journal
