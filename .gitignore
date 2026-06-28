@@ -29,3 +29,6 @@ pnpm-debug.log*
 # IDE
 .vscode/
 .idea/
+
+# codebase snapshot
+dss_project_codebase_snapshot.txt
