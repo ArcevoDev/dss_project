@@ -1,0 +1,112 @@
+/**
+ * SAW ENGINE - Simple Additive Weighting
+ * ----------------------------------------
+ * Normalises student profile data and computes ranked
+ * preference scores (Vi) for each academic stream.
+ *
+ * Streams:
+ *   A1 = Science
+ *   A2 = Humanities
+ *   A3 = Business
+ *
+ * Formula: Vi = sum(wj * Rij)
+ *   where Rij = xij / max(xj)  [benefit criterion normalisation]
+ */
+
+import { W_ACADEMIC, W_RIASEC, W_PERSONALITY } from "./ahp";
+import type {
+  AcademicInput,
+  PersonalityInput,
+  RiasecAffinityInput,
+  SawResult,
+  Stream,
+} from "@/types/domain";
+
+/**
+ * Normalise a value to [0, 1] range (clamped).
+ */
+function normalise(value: number, max: number): number {
+  if (max === 0) return 0;
+  const ratio = value / max;
+  return Math.min(1, Math.max(0, ratio));
+}
+
+/**
+ * Compute SAW preference scores for all three streams.
+ *
+ * @param academic    - { weightedScore: number (0-100) }
+ * @param riasec      - { scienceAffinity, humanitiesAffinity, businessAffinity } (0-100 each)
+ * @param personality - { opennessScore, conscientiousnessScore, extraversionScore, agreeablenessScore } (0-100 each)
+ */
+export function computeSAW(
+  academic: AcademicInput,
+  riasec: RiasecAffinityInput,
+  personality: PersonalityInput
+): SawResult {
+  // ── Normalise Academic score (same for all streams, reflects general readiness) ──
+  const R_academic = normalise(academic.weightedScore, 100);
+
+  // ── Normalise RIASEC affinity per stream ─────────────────
+  const R_riasec_science = normalise(riasec.scienceAffinity, 100);
+  const R_riasec_humanities = normalise(riasec.humanitiesAffinity, 100);
+  const R_riasec_business = normalise(riasec.businessAffinity, 100);
+
+  // ── Normalise Personality per stream ─────────────────────
+  // Science    → rewards Openness (curiosity, analytical depth)
+  // Humanities → rewards Openness + Agreeableness (empathy, creativity)
+  // Business   → rewards Extraversion + Conscientiousness (drive, organisation)
+  const R_personality_science = normalise(personality.opennessScore, 100);
+  const R_personality_humanities = normalise(
+    (personality.opennessScore + personality.agreeablenessScore) / 2,
+    100
+  );
+  const R_personality_business = normalise(
+    (personality.extraversionScore + personality.conscientiousnessScore) / 2,
+    100
+  );
+
+  // ── SAW weighted sum per stream ───────────────────────────
+  const vScience =
+    W_ACADEMIC * R_academic + W_RIASEC * R_riasec_science + W_PERSONALITY * R_personality_science;
+
+  const vHumanities =
+    W_ACADEMIC * R_academic +
+    W_RIASEC * R_riasec_humanities +
+    W_PERSONALITY * R_personality_humanities;
+
+  const vBusiness =
+    W_ACADEMIC * R_academic + W_RIASEC * R_riasec_business + W_PERSONALITY * R_personality_business;
+
+  // ── Rank streams ─────────────────────────────────────────
+  const streams: { stream: Stream; score: number }[] = [
+    { stream: "Science" as Stream, score: vScience },
+    { stream: "Humanities" as Stream, score: vHumanities },
+    { stream: "Business" as Stream, score: vBusiness },
+  ].sort((a, b) => b.score - a.score);
+
+  const totalScore = vScience + vHumanities + vBusiness;
+  const rawCL = streams[0]!.score / totalScore; // raw confidence [0,1]
+
+  // Min-max rescale raw CL to display range [0.50, 1.00]
+  // so the displayed % is always interpretable (lowest meaningful = 50%)
+  const displayCL = 0.5 + ((rawCL - 1 / 3) / (1 - 1 / 3)) * 0.5;
+  const confidenceLevel = Math.min(100, Math.max(50, displayCL * 100));
+
+  return {
+    ranked: streams,
+    topStream: streams[0]!.stream,
+    vScience: parseFloat(vScience.toFixed(4)),
+    vHumanities: parseFloat(vHumanities.toFixed(4)),
+    vBusiness: parseFloat(vBusiness.toFixed(4)),
+    confidenceLevel: parseFloat(confidenceLevel.toFixed(1)),
+    normalised: {
+      academic: parseFloat(R_academic.toFixed(3)),
+      riasecScience: parseFloat(R_riasec_science.toFixed(3)),
+      riasecHumanities: parseFloat(R_riasec_humanities.toFixed(3)),
+      riasecBusiness: parseFloat(R_riasec_business.toFixed(3)),
+      personalityScience: parseFloat(R_personality_science.toFixed(3)),
+      personalityHumanities: parseFloat(R_personality_humanities.toFixed(3)),
+      personalityBusiness: parseFloat(R_personality_business.toFixed(3)),
+    },
+  };
+}
