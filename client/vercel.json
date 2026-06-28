@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "comment": "DSS Client — React SPA deployed to Vercel. The server (Express + Prisma) must be deployed separately (Railway, Render, or a VPS). Set VITE_API_URL in Vercel environment variables to point to your deployed server.",
   "buildCommand": "pnpm --filter client build",
   "outputDirectory": "client/dist",
   "installCommand": "pnpm install",
