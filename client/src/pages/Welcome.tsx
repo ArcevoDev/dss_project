@@ -117,7 +117,7 @@ export default function Welcome() {
                 </Link>
                 <Link
                   to="/login"
-                  className="btn-secondary border-white/40 text-white hover:bg-white/10"
+                  className="btn-secondary bg-white/10 border-white/40 text-white hover:bg-white/5"
                 >
                   I Have an Account
                 </Link>
