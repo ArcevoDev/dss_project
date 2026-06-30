@@ -60,13 +60,7 @@ function isOriginAllowed(origin: string): boolean {
 app.use(
   cors({
     origin(origin, callback) {
-      // No Origin header = same-origin request, curl, server-to-server,
-      // or a health-check probe — always allow.
-      if (!origin) {
-        callback(null, true);
-        return;
-      }
-      if (isOriginAllowed(origin)) {
+      if (!origin || isOriginAllowed(origin)) {
         callback(null, true);
         return;
       }
@@ -76,6 +70,7 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    optionsSuccessStatus: 204
   })
 );
 
