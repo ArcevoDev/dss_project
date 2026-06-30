@@ -1,26 +1,19 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-
     "module": "commonjs",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "Node",
     "moduleDetection": "force",
-
     "strict": true,
-
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
-
     "forceConsistentCasingInFileNames": true,
-
     "esModuleInterop": true,
     "resolveJsonModule": true,
-
     "skipLibCheck": true,
-
-    "sourceMap": true,
+    "sourceMap": true
   }
 }
