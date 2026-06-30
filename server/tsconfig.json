@@ -1,13 +1,12 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "ignoreDeprecations": "6.0",
     "outDir": "./dist",
     "lib": ["ES2022"],
     "types": ["node"],
     "paths": {
       "@/*": ["./src/*"],
-      "@prisma-client": ["./prisma/generated/client"]
+      "@prisma-client": ["./prisma/generated/client/client.js"]
     }
   },
   "include": ["src/**/*.ts", "prisma/generated/**/*.ts"],
