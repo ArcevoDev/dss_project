@@ -6,7 +6,7 @@
     "types": ["node"],
     "paths": {
       "@/*": ["./src/*"],
-      "@prisma-client": ["./prisma/generated/client/client.js"]
+      "@prisma-client": ["./prisma/generated/client"]
     }
   },
   "include": ["src/**/*.ts", "prisma/generated/**/*.ts"],
