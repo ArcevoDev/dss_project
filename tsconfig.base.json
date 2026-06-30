@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
 
-    "module": "esNext",
+    "module": "commonjs",
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
 
