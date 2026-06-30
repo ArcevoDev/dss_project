@@ -54,7 +54,7 @@ export default function App() {
             }
           />
           <Route
-            path="/riasec.js"
+            path="/riasec"
             element={
               <PrivateRoute>
                 <RIASEC />

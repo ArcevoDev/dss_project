@@ -104,7 +104,7 @@ export default function Scores() {
       toast.success("Academic scores saved!", {
         description: "Moving on to the Interest Assessment.",
       });
-      navigate("/riasec.js");
+      navigate("/riasec");
     } catch (err) {
       const msg = getApiErrorMessage(err, "Failed to save scores. Please try again.");
       setError(msg);
