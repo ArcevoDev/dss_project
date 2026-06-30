@@ -80,7 +80,7 @@ app.get("/api/health", (_req: Request, res: Response) => {
 // ── API Routes ────────────────────────────────────────────────────────────────
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
-app.use("/api/riasec.js", riasecRoutes);
+app.use("/api/riasec", riasecRoutes);
 app.use("/api/bfi", bfiRoutes);
 app.use("/api/recommend", recommendRoutes);
 app.use("/api/jamb", jambRoutes);

@@ -10,7 +10,7 @@ interface NavStep {
 
 const STEPS: NavStep[] = [
   { path: "/scores", label: "Academic Scores", step: 1 },
-  { path: "/riasec", label: "Interest Quiz", step: 2 },
+  { path: "/riasec.js", label: "Interest Quiz", step: 2 },
   { path: "/personality", label: "Personality", step: 3 },
   { path: "/results", label: "Results", step: 4 },
 ];

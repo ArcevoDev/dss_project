@@ -1,5 +1,5 @@
 import { FlaskConical, BookOpen, TrendingUp, Star, type LucideIcon } from "lucide-react";
-import type { Stream } from "@/types/index";
+import type { Stream } from "@/types/index.js";
 
 interface StreamMeta {
   color: string;
