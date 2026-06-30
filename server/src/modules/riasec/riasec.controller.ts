@@ -1,8 +1,8 @@
 import type { Request, Response } from "express";
-import { prisma } from "@/db/prisma";
-import { asyncHandler } from "@/middleware/async-handler";
-import { computeRIASEC, RIASEC_QUESTIONS } from "@/engine/riasec";
-import type { RiasecSubmitInput } from "@/validators/schemas";
+import { prisma } from "@/db/prisma.js";
+import { asyncHandler } from "@/middleware/index.js";
+import { computeRIASEC, RIASEC_QUESTIONS } from "@/engine/riasec.js";
+import type { RiasecSubmitInput } from "@/validators/schemas.js";
 
 export function getQuestions(_req: Request, res: Response): void {
   res.json({ questions: RIASEC_QUESTIONS, total: RIASEC_QUESTIONS.length });

@@ -1,2 +1,2 @@
-export * from "./recommend.controller"
-export * from "./recommend.routes"
+export * from "./recommend.controller.js"
+export * from "./recommend.routes.js"

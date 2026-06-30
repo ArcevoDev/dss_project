@@ -1,2 +1,2 @@
-export * from "./auth.controller"
-export * from "./auth.routes"
+export * from "./auth.controller.js"
+export * from "./auth.routes.js"

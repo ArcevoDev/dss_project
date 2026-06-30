@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { getRecommendation, getHistory } from "./recommend.controller";
-import { authenticateToken } from "@/middleware/auth.middleware";
+import { getRecommendation, getHistory } from "./recommend.controller.js";
+import { authenticateToken } from "@/middleware/index.js";
 
 export const recommendRoutes = Router();
 

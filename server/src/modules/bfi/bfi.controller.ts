@@ -1,8 +1,8 @@
 import type { Request, Response } from "express";
-import { prisma } from "@/db/prisma";
-import { asyncHandler } from "@/middleware/async-handler";
-import { computeBFI, BFI_QUESTIONS } from "@/engine/bfi";
-import type { BfiSubmitInput } from "@/validators/schemas";
+import { prisma } from "@/db/prisma.js";
+import { asyncHandler } from "@/middleware/index.js";
+import { computeBFI, BFI_QUESTIONS } from "@/engine/bfi.js";
+import type { BfiSubmitInput } from "@/validators/schemas.js";
 
 export function getBfiQuestions(_req: Request, res: Response): void {
   res.json({ questions: BFI_QUESTIONS, total: BFI_QUESTIONS.length });

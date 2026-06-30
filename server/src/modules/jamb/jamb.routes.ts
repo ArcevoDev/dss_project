@@ -1,9 +1,7 @@
 import { Router } from "express";
-import { validateCombination, getCatalog, getValidationHistory } from "./jamb.controller";
-import { authenticateToken, validateBody } from "@/middleware";
-// FIX (Bug 2.4): import validateQuery (new export from middleware/validate.ts)
-import { validateQuery } from "@/middleware";
-import { jambValidateSchema, jambCatalogQuerySchema } from "@/validators/schemas";
+import { validateCombination, getCatalog, getValidationHistory } from "./jamb.controller.js";
+import { authenticateToken, validateBody, validateQuery } from "@/middleware/index.js";
+import { jambValidateSchema, jambCatalogQuerySchema } from "@/validators/schemas.js";
 
 export const jambRoutes = Router();
 

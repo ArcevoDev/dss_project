@@ -19,7 +19,7 @@
  * Expected derived weights: ω1 ≈ 0.540, ω2 ≈ 0.297, ω3 ≈ 0.163 (CR ≈ 0.007).
  */
 
-import type { AhpResult } from "@/types/domain";
+import type { AhpResult } from "@/types/domain.js";
 
 // ── Raw pairwise comparison matrix ─────────────────────────
 const PAIRWISE_MATRIX: number[][] = [

@@ -1,8 +1,8 @@
 import type { Request, Response } from "express";
-import { prisma } from "@/db/prisma";
-import { asyncHandler } from "@/middleware/async-handler";
+import { prisma } from "@/db/prisma.js";
+import { asyncHandler } from "@/middleware/index.js";
 import { AcademicLevel, type Subject } from "@prisma-client";
-import type { AcademicScoresInput } from "@/validators/schemas";
+import type { AcademicScoresInput } from "@/validators/schemas.js";
 
 /**
  * Compute the weighted academic score from a set of SubjectScore rows:

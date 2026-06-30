@@ -1,2 +1,2 @@
-export * from "./bfi.controller"
-export * from "./bfi.routes"
+export * from "./bfi.controller.js"
+export * from "./bfi.routes.js"

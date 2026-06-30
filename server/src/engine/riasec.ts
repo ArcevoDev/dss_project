@@ -12,7 +12,7 @@
  *   Business   = E (60%, primary) + C (40%, secondary)
  */
 
-import type { RiasecLetter, RiasecQuestion, RiasecScores } from "@/types/domain";
+import type { RiasecLetter, RiasecQuestion, RiasecScores } from "@/types/domain.js";
 
 export const RIASEC_QUESTIONS: RiasecQuestion[] = [
   // ── REALISTIC (R) ──

@@ -12,7 +12,7 @@
 // ============================================================================
 
 import "dotenv/config";
-import { prisma, disconnectPrisma } from "@/db/prisma";
+import { prisma, disconnectPrisma } from "@/db/prisma.js";
 import { AcademicStream, Subject } from "./generated/client";
 import type { AcademicStream as AcademicStreamType, Subject as SubjectType } from "./generated/client.js";
 

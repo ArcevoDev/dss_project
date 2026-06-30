@@ -19,7 +19,7 @@
  * established positive direction toward a specific stream).
  */
 
-import type { BfiQuestion, BfiScores, BfiTrait } from "@/types/domain";
+import type { BfiQuestion, BfiScores, BfiTrait } from "@/types/domain.js";
 
 export const BFI_QUESTIONS: BfiQuestion[] = [
   // ── OPENNESS (O) ──

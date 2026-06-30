@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { submitBFI, getBFI, getBfiQuestions } from "./bfi.controller";
-import { authenticateToken, validateBody } from "@/middleware"; 
-import { bfiSubmitSchema } from "@/validators/schemas";
+import { submitBFI, getBFI, getBfiQuestions } from "./bfi.controller.js";
+import { authenticateToken, validateBody } from "@/middleware/index.js"; 
+import { bfiSubmitSchema } from "@/validators/schemas.js";
 
 export const bfiRoutes = Router();
 

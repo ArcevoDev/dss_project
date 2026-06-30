@@ -1,2 +1,2 @@
-export * from "./jamb.controller"
-export * from "./jamb.routes"
+export * from "./jamb.controller.js"
+export * from "./jamb.routes.js"

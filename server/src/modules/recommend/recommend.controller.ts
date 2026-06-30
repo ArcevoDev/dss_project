@@ -1,11 +1,9 @@
 import type { Request, Response } from "express";
-import { prisma } from "@/db/prisma";
-import { asyncHandler } from "@/middleware/async-handler";
-import { computeSAW } from "@/engine/saw";
-import { generateGuidanceInsight } from "@/engine/confidence";
-import { AHP_WEIGHTS } from "@/engine/ahp";
+import { prisma } from "@/db/prisma.js";
+import { asyncHandler } from "@/middleware/index.js";
+import { computeSAW, generateGuidanceInsight, AHP_WEIGHTS } from "@/engine/index.js";
 import { AcademicStream } from "@prisma-client";
-import type { PersonalityInput } from "@/types/domain";
+import type { PersonalityInput } from "@/types/domain.js";
 
 const ALGORITHM_VERSION = "ahp-saw-v1.0";
 

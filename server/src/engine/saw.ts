@@ -13,14 +13,14 @@
  *   where Rij = xij / max(xj)  [benefit criterion normalisation]
  */
 
-import { W_ACADEMIC, W_RIASEC, W_PERSONALITY } from "./ahp";
+import { W_ACADEMIC, W_RIASEC, W_PERSONALITY } from "./ahp.js";
 import type {
   AcademicInput,
   PersonalityInput,
   RiasecAffinityInput,
   SawResult,
   Stream,
-} from "@/types/domain";
+} from "@/types/domain.js";
 
 /**
  * Normalise a value to [0, 1] range (clamped).

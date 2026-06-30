@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { submitRIASEC, getRIASEC, getQuestions } from "./riasec.controller";
-import { authenticateToken, validateBody } from "@/middleware"; 
-import { riasecSubmitSchema } from "@/validators/schemas";
+import { submitRIASEC, getRIASEC, getQuestions } from "./riasec.controller.js";
+import { authenticateToken, validateBody } from "@/middleware/index.js"; 
+import { riasecSubmitSchema } from "@/validators/schemas.js";
 
 export const riasecRoutes = Router();
 

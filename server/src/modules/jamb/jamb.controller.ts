@@ -1,11 +1,11 @@
 import type { Request, Response } from "express";
-import { prisma } from "@/db/prisma";
-import { asyncHandler } from "@/middleware/async-handler";
+import { prisma } from "@/db/prisma.js";
+import { asyncHandler } from "@/middleware/index.js";
 import { AcademicStream, Subject } from "@prisma-client";
 import type {
   JambCatalogQueryInput,
   JambValidateInput,
-} from "@/validators/schemas";
+} from "@/validators/schemas.js";
 
 /**
  * Fetches the available JAMB courses, optionally filtered by Academic Stream or Faculty Area.

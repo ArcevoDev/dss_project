@@ -2,9 +2,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import type { Request, Response } from "express";
 import { Gender, SSLevel } from "@prisma-client";
-import { prisma } from "@/db/prisma";
-import { asyncHandler } from "@/middleware/async-handler";
-import type { LoginInput, RegisterInput } from "@/validators/schemas";
+import { prisma } from "@/db/prisma.js";
+import { asyncHandler } from "@/middleware/index.js";
+import type { LoginInput, RegisterInput } from "@/validators/schemas.js";
 
 interface TokenSubject {
   id: string;

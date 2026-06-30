@@ -5,7 +5,7 @@
  * Maps top stream + RIASEC Summary Code to human-readable guidance.
  */
 
-import type { RiasecLetter, SawResult, Stream } from "@/types/domain";
+import type { RiasecLetter, SawResult, Stream } from "@/types/domain.js";
 
 interface StreamDescription {
   subjects: string;

@@ -1,2 +1,2 @@
-export * from "./profile.controller"
-export * from "./profile.routes"
+export * from "./profile.controller.js"
+export * from "./profile.routes.js"
