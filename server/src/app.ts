@@ -15,6 +15,9 @@ import {
 } from "./modules/index.js";
 
 const app = express();
+// Tell Express to trust reverse proxy headers (Cloudflare, Railway, etc.)
+app.set("trust proxy", 1);
+
 const PORT = process.env["PORT"] ?? 5000;
 const IS_PROD = process.env["NODE_ENV"] === "production";
 
